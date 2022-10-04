@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./script.js"></script>
+  </head>
+  <body>
+    <div class="maindiv">
+      <form class="addThings">
+        <div class="fadeBoarder">
+          <h1>What's your main hobby?</h1>
+        </div>
+        <div class="fadeBoarder">
+          <label for="fName">Full Name: </label><br />
+          <input type="text" class="textbox" name="fName" id="fName" /><br />
+          <label for="dOb">Date of Birth: </label><br />
+          <input type="date" class="textbox" name="dOb" id="dOb" /><br />
+        </div>
+        <div class="fadeBoarder">
+          <div>
+            <h2>Main Hoobby</h2>
+            <select name="chooseHub" id="chooseHob" class="selecting">
+              <option value="" hidden>--Please choose--</option>
+              <optgroup label="Sports:">
+                <option value="Football">Football</option>
+                <option value="Swimming">Swimming</option>
+                <option value="Pool">Pool</option>
+                <option value="Basketball">Basketball</option>
+              </optgroup>
+              <optgroup label="Entertainment:">
+                <option value="Movie">Watching Films</option>
+                <option value="Reading">Magazine</option>
+              </optgroup>
+              <optgroup label="Others:">
+                <option value="others" id="pleaseType">
+                  Please type yours
+                </option>
+              </optgroup>
+            </select>
+          </div>
+          <div>
+            <label class="rating-label">
+              <h3>How much do you like your hobby?</h3>
+              <input
+                id="heartRate"
+                class="rating"
+                max="5"
+                oninput="this.style.setProperty('--value', `${this.valueAsNumber}`)"
+                step="0.005"
+                style="--fill: #c8102e; --symbol: var(--heart); --value: 2.75"
+                type="range"
+                value="2.75"
+              />
+            </label>
+            <div>
+              <input
+                type="button"
+                class="endofform"
+                name="sbubmitButton"
+                value="submit"
+                onclick="validPrint(fName, dOb, chooseHub, heartRate)"
+              />
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div>
+      <div>
+        <p id="unexpected"></p>
+      </div>
+      <div>
+        <ul id="peopleList"></ul>
+      </div>
+    </div>
+  </body>
+</html>
