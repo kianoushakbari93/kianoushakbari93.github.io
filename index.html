@@ -16,10 +16,10 @@
             <h1>What's your main hobby?</h1>
           </div>
           <div class="fadeBoarder">
-            <label class="labels" for="fName">Full Name: </label><br>
-            <input type="text" class="textbox" name="fName" id="Name" /><br>
-            <label class="labels" for="dOb">Date of Birth: </label><br>
-            <input type="date" class="textbox" name="dOb" id="Date" /><br>
+            <label class="labels" for="fName">Full Name: </label><br />
+            <input type="text" class="textbox" name="fName" id="Name" /><br />
+            <label class="labels" for="dOb">Date of Birth: </label><br />
+            <input type="date" class="textbox" name="dOb" id="Date" /><br />
           </div>
         </div>
         <div class="secondDiv">
@@ -78,18 +78,34 @@
         </div>
         <div class="fourthDiv">
           <div class="fadeBoarder">
-            <div>
-              <h2>
-                Please submit to see the results!
-              </h2>
+            <div class="insideFourth">
+              <div class="uploadDiv">
+                <div>
+                  <h2>Upload your Image</h2>
+                </div>
+                <div>
+                  <input
+                    class="uploadBut"
+                    id="fileInput"
+                    type="file"
+                    accept="image/jpg/png"
+                    multiple="false"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  <h2>Please submit to see the results!</h2>
+                </div>
+                <input
+                  type="button"
+                  class="submitBut"
+                  name="submitButton"
+                  value="submit"
+                  onclick="validPrint(fName, dOb, chooseHob, heartRate)"
+                />
+              </div>
             </div>
-            <input
-              type="button"
-              class="endofform"
-              name="sbubmitButton"
-              value="submit"
-              onclick="validPrint(fName, dOb, chooseHob, heartRate)"
-            />
           </div>
         </div>
       </form>
@@ -104,3 +120,4 @@
     </div>
   </body>
 </html>
+

@@ -3,6 +3,8 @@ let people = JSON.parse(localStorage.getItem(peoplekey)) || [];
 
 // make a validate form for only char in name and number in bOd
 
+let dataUrl;
+
 function validPrint(fullName, dateOfB, selectOpt, heartRate) {
   // defining errors as an empty array to be able to print errors inside it
   let errors = [];
@@ -16,6 +18,9 @@ function validPrint(fullName, dateOfB, selectOpt, heartRate) {
       errors.push(errorMsg);
     }
   });
+  if (!dataUrl) {
+    errors.push("No image was selected!");
+  }
   console.log(errorMsg);
   if (errors.length > 0) {
     document.getElementById("unexpected").innerHTML = errors.join("<br>");
@@ -39,6 +44,19 @@ function validNotBlank(elementId) {
   return error;
 }
 
+let reader = new FileReader();
+const input = document.getElementById("fileInput");
+input.onchange = () => {
+  reader.readAsDataURL(input.files[0]);
+
+  // reader.result // null
+}
+
+reader.onload = () => {
+  dataUrl = reader.result;
+}
+
+
 // declaring a function to add the properties inside our people array
 function addPro(fullName, dateOfB, selectOpt, heartRate) {
   /* logic for checking if others being selected
@@ -58,7 +76,11 @@ function addPro(fullName, dateOfB, selectOpt, heartRate) {
   } else {
     hobby = selectOpt;
   }
+  if(!dataUrl) {
+    return false;
+  }
   const properties = {
+    image: dataUrl,
     fName: fullName,
     dOb: dateOfB,
     choice: hobby,
@@ -78,10 +100,19 @@ function listPeople() {
   let htmlString = "";
   people.forEach((x, i) => {
     htmlString +=
-      `<div class="colorlist"><div><p id="personPara-${i}">Full Name: ${x.fName}<br>Date of Birth: ${x.dOb}<br>Hobby: ${x.choice}<br>Rating: ${x.heartRate} &hearts;</p></div>` +
-      `<div class="buttonDiv"><br><button class="dynamicButton" onclick=deletePerson(${i})>Delete</button>` +
-      `<button id="edit-button-${i}" class="dynamicButton" onclick=editPerson(${i})>Edit</button>` +
-      `<button id="edit-end-${i}" class="dynamicButton" onclick=donePerson(${i})>Done</button></div></div>`;
+      `<div class="colorlist">
+        <div class="proDynamic">
+          <img class="dynamicImg" src="${x.image}" />
+          <p id="personPara-${i}">
+            Full Name: ${x.fName}<br>Date of Birth: ${x.dOb}<br>Hobby: ${x.choice}<br>Rating: ${x.heartRate} &hearts;
+          </p>
+        </div>
+        <div class="buttonDiv">
+          <button class="dynamicButton" onclick=deletePerson(${i})>Delete</button>
+          <button id="edit-button-${i}" class="dynamicButton" onclick=editPerson(${i})>Edit</button>
+          <button id="edit-end-${i}" class="dynamicButton" onclick=donePerson(${i})>Done</button>
+        </div>
+      </div>`;
   });
   peopleListElement.innerHTML = htmlString;
   //editing button
@@ -132,7 +163,6 @@ otherOpt.onchange = () => {
     optDiv.innerHTML = null;
   }
 };
-
 // listPeople when the page loads
 document.getElementById("body").onload = () => {
   listPeople();
