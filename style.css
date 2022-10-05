@@ -2,21 +2,20 @@
   --dir: right;
   --fillbg: rgba(100, 100, 100, 0.15);
   --heart: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.328l-1.453-1.313q-2.484-2.25-3.609-3.328t-2.508-2.672-1.898-2.883-0.516-2.648q0-2.297 1.57-3.891t3.914-1.594q2.719 0 4.5 2.109 1.781-2.109 4.5-2.109 2.344 0 3.914 1.594t1.57 3.891q0 1.828-1.219 3.797t-2.648 3.422-4.664 4.359z"/></svg>');
-  --stars: 5;
-  --starsize: 2rem;
+  --stars: 6;
+  --starsize: 1.8rem;
   --symbol: var(--star);
   --value: 1;
   --w: calc(var(--stars) * var(--starsize));
   --x: calc(100% * (var(--value) / var(--stars)));
   block-size: var(--starsize);
-  inline-size: var(--w);
-  position: relative;
+  inline-size: 170px;
   touch-action: manipulation;
   -webkit-appearance: none;
 }
 
 [dir="rtl"] .rating {
-  --dir: left;
+  --dir: center;
 }
 .rating::-moz-range-track {
   background: linear-gradient(
@@ -51,76 +50,129 @@
 .rating,
 .rating-label {
   display: flex;
-  font-family: ui-sans-serif, system-ui, sans-serif;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
 }
 .rating-label {
   margin-block-end: 1rem;
-  display: block;
-  justify-items: center;
 }
 
 .endofform {
   margin-top: 20px;
   width: 90px;
   height: 40px;
-  border: none;
+  border: solid;
   border-radius: 5px;
   transition: 0.5s;
   background-color: rgb(87, 97, 97);
-  color: aliceblue;
 }
 .endofform:hover {
   cursor: pointer;
   background-color: rgb(100, 100, 255);
+  color: aliceblue;
 }
 
 .selecting {
   margin-top: 20px;
-  width: 250px;
+  width: 50%;
   height: 40px;
-  border: none;
+  border: solid;
   border-radius: 5px;
   transition: 0.5s;
   background-color: rgb(87, 97, 97);
-  color: aliceblue;
   text-align: center;
-  opacity: 1;
+  margin-bottom: 20px;
 }
 .selecting:hover {
   cursor: pointer;
   background-color: rgb(100, 100, 255);
+  opacity: 0.8;
 }
 
 body {
   background-image: url(./image/Main\ bg.jpg);
-  background-repeat: round;
+  background-repeat: inherit;
 }
 .fadeBoarder {
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-  align-items: center;
-  border-radius: 50px;
+  border-radius: 20px;
   background-color: rgb(255, 255, 255);
   opacity: 0.6;
-  margin: 5% 10% 5% 10%;
   padding: 5% 5%;
   transition: 0.2s;
+  width: 40%;
+  text-align: center;
+  margin: 10px;
 }
 .fadeBoarder:hover {
   opacity: 1;
-}
-.maindiv {
-  display: flex;
-  flex-flow: column;
-  justify-content: space-around;
 }
 
 .textbox {
   border: solid;
   border-radius: 5px;
-  width: 200px;
+  width: 50%;
   height: 40px;
   text-align: center;
+  margin: 10px;
+}
+
+.firstDiv {
+  display: flex;
+  justify-content: space-around;
+}
+.colorlist {
+  background-color: rgb(65, 65, 65);
+  border-radius: 20px;
+  width: 21%;
+  min-width: 308px;
+  height: 170px;
+  padding-left: 30px;
+  padding-top: 20px;
+  color: aliceblue;
+  margin: 10px 10px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+.colorlist:hover {
+  opacity: 1;
+}
+.peoplelist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center s;
+}
+.thirdDiv {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.secondDiv {
+  display: flex;
+}
+.fourthDiv {
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+}
+.heartDiv {
+  margin-top: 20px;
+}
+
+.dynamicButton {
+  margin-top: 10px;
+  margin-right: 5px;
+  width: 90px;
+  height: 40px;
+  border: solid;
+  border-radius: 5px;
+  transition: 0.5s;
+  background-color: rgb(87, 97, 97);
+}
+.dynamicButton:hover {
+  cursor: pointer;
+  background-color: rgb(100, 100, 255);
+  color: aliceblue;
+}
+.buttonDiv {
+  display:flex;
 }
