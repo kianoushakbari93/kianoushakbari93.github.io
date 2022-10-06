@@ -18,19 +18,19 @@ function validPrint(fullName, dateOfB, selectOpt, heartRate) {
     errorMsg = validNotBlank(element);
     if (errorMsg != "") {
       errors.push(errorMsg);
-    };
+    }
   });
   if (!dataUrl) {
     errors.push("No image!");
-  };
+  }
   console.log(errorMsg);
   if (errors.length > 0) {
     document.getElementById("unexpected").innerHTML = errors.join("<br>");
   } else {
     document.getElementById("unexpected").innerHTML = null;
     addPro(fullName.value, dateOfB.value, selectOpt.value, heartRate.value);
-  };
-};
+  }
+}
 
 // declaring the function to validate our form to be filled completely
 function validNotBlank(elementId) {
@@ -42,9 +42,9 @@ function validNotBlank(elementId) {
     elementId.style.backgroundColor = "red";
   } else {
     elementId.style.backgroundColor = "white";
-  };
+  }
   return error;
-};
+}
 
 const input = document.getElementById("fileInput");
 input.onchange = () => {
@@ -86,12 +86,12 @@ function addPro(fullName, dateOfB, selectOpt, heartRate) {
     heartRate: heartRate,
   };
   people.push(properties);
-  dataUrl = '';
+  dataUrl = "";
 
   localStorage.setItem(peoplekey, JSON.stringify(people));
 
   listPeople();
-};
+}
 
 function listPeople() {
   const peopleListElement = document.getElementById("peopleList");
@@ -115,7 +115,7 @@ function listPeople() {
   });
   peopleListElement.innerHTML = htmlString;
   //editing button
-};
+}
 
 function editPerson(indexOfPersonToEdit) {
   let paragraph = document.getElementById("personPara-" + indexOfPersonToEdit);
@@ -134,7 +134,7 @@ function editPerson(indexOfPersonToEdit) {
     dataUrl = "";
     reader.readAsDataURL(editInput.files[0]);
   };
-};
+}
 
 function donePerson(indexOfPersonToSave) {
   const editProperties = {
@@ -143,17 +143,17 @@ function donePerson(indexOfPersonToSave) {
     dOb: document.getElementById("editAge").value,
     choice: document.getElementById("editOthers").value,
     heartRate: document.getElementById("editRate").value,
-  }
-  dataUrl = '';
+  };
+  dataUrl = "";
   people[indexOfPersonToSave] = editProperties;
 
   listPeople();
-};
+}
 // delete a person from the people array with the given index
 function deletePerson(indexOfPersonToDelete) {
   people = people.filter((x, i) => i !== indexOfPersonToDelete);
   listPeople();
-};
+}
 const optDiv = document.getElementById("chooseHobtextbox");
 const otherOpt = document.getElementById("Hobby");
 otherOpt.onchange = () => {
@@ -170,3 +170,9 @@ otherOpt.onchange = () => {
 document.getElementById("body").onload = () => {
   listPeople();
 };
+
+function clearLocal() {
+  localStorage.clear();
+  people = [];
+  listPeople();
+}

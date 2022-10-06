@@ -14,6 +14,12 @@
         <div class="firstDiv">
           <div class="fadeBoarder">
             <h1>What's your main hobby?</h1>
+            <input
+              type="button"
+              class="clearBut"
+              value="Clear Data"
+              onclick="clearLocal()"
+            />
           </div>
           <div class="fadeBoarder">
             <label class="labels" for="fName">Full Name: </label><br />
@@ -63,13 +69,9 @@
                     max="6"
                     oninput="this.style.setProperty('--value', `${this.valueAsNumber}`)"
                     step="0.005"
-                    style="
-                      --fill: #c8102e;
-                      --symbol: var(--heart);
-                      --value: 2.75;
-                    "
+                    style="--fill: #c8102e; --symbol: var(--heart); --value: 3"
                     type="range"
-                    value="2.75"
+                    value="3"
                   />
                 </label>
               </div>
