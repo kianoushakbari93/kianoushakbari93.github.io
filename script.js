@@ -121,14 +121,14 @@ function editPerson(indexOfPersonToEdit) {
   let paragraph = document.getElementById("personPara-" + indexOfPersonToEdit);
   paragraph.innerHTML = `
     <input class="editUpload" id="editFile" type="file" accept="image/jpg/png" multiple="false" /><br>
-    <label class="labels" for="fName">Full Name: </label>
-    <input type="text" id="editName" name="editName"/><br>
-    <label class="labels" for="dOb">Age: </label>
-    <input type="date" id="editAge" name="editAge"/><br>
+    <label class="labelsName" for="fName">Name: </label>
+    <input class="dynamicBox" type="text" id="editName" name="editName"/><br>
+    <label class="labelsAge" for="dOb">Age: </label>
+    <input class="dynamicBox" type="date" id="editAge" name="editAge"/><br>
     <label class="labels" for="others">Hobby: </label>
-    <input type="text" name="oThers" id="editOthers"><br>
-    <label class="labels" for="others">Rating: </label>
-    <input type="text" name="rating" id="editRate">`;
+    <input class="dynamicBox" type="text" name="oThers" id="editOthers"><br>
+    <label class="labelsRate" for="others">Rating: </label>
+    <input class="dynamicBox" type="text" name="rating" id="editRate">`;
   const editInput = document.getElementById("editFile");
   editInput.onchange = () => {
     dataUrl = "";
