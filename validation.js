@@ -28,7 +28,12 @@ const validPrint = (fullName, dateOfB, selectOpt, heartRate, dataUrl) => {
   });
 
   if (errors.length > 0) {
-    document.getElementById("unexpected").innerHTML = errors.join("<br>");
+    document.getElementById("unexpected").innerHTML = errors.join("<br><br>");
+    document.getElementById("unexpected").style.color = "red";
+    document.getElementById("unexpected").style.borderStyle = "dotted";
+    document.getElementById("unexpected").style.borderColor = "red";
+    document.getElementById("unexpected").style.borderRadius = "5px";
+    document.getElementById("unexpected").style.padding = "10px";
   } else {
     document.getElementById("unexpected").innerHTML = null;
     addPro(
