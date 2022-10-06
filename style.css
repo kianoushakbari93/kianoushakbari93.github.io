@@ -98,9 +98,9 @@ body {
   border-radius: 20px;
   background-color: rgb(255, 255, 255);
   opacity: 0.6;
-  padding: 5% 5%;
+  padding: 3%;
   transition: 0.2s;
-  width: 40%;
+  width: 50%;
   text-align: center;
   margin: 10px;
 }
@@ -127,7 +127,7 @@ body {
   border-radius: 20px;
   width: 20%;
   min-width: 308px;
-  height: 170px;
+  height: 190px;
   padding-left: 30px;
   padding-top: 20px;
   padding-right: 18px;
@@ -183,7 +183,7 @@ body {
 .uploadDiv {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 33%;
 }
 .dynamicImg{
   max-width: 20%;
@@ -195,4 +195,11 @@ body {
 .proDynamic{
   display: flex;
   flex-direction: column;
+}
+.errorDiv {
+  margin-left: 20px;
+}
+.uploadBut {
+  margin-left: 10%;
+  max-width: 100%;
 }
