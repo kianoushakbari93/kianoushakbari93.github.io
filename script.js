@@ -176,3 +176,6 @@ function clearLocal() {
   people = [];
   listPeople();
 }
+function resetValue() {
+  document.getElementById("fileInput").value = ""
+}
