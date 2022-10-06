@@ -57,7 +57,6 @@
   margin-block-end: 1rem;
 }
 
-
 .submitBut {
   margin-top: 20px;
   width: 90px;
@@ -185,14 +184,14 @@ body {
   flex-direction: column;
   width: 33%;
 }
-.dynamicImg{
+.dynamicImg {
   max-width: 20%;
 }
 .buttonDiv {
   display: flex;
   flex-direction: column;
 }
-.proDynamic{
+.proDynamic {
   display: flex;
   flex-direction: column;
 }
@@ -202,4 +201,19 @@ body {
 .uploadBut {
   margin-left: 10%;
   max-width: 100%;
+}
+.clearBut {
+  margin-top: 20px;
+  width: 90px;
+  height: 40px;
+  border: solid;
+  border-radius: 5px;
+  transition: 0.5s;
+  background-color: rgb(255, 140, 140);
+  color: brown;
+}
+.clearBut:hover {
+  cursor: pointer;
+  background-color: rgb(255, 0, 0);
+  color: aliceblue;
 }
