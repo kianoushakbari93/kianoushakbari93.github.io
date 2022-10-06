@@ -8,5 +8,5 @@ otherOpt.onchange = () => {
     `;
   } else {
     optDiv.innerHTML = null;
-  }
+  };
 };
