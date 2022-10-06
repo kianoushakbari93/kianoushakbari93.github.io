@@ -7,8 +7,8 @@ let people = JSON.parse(localStorage.getItem("key")) || [];
 
 // Update the local storage with the current people array
 const updateLocalStorage = () => {
-  localStorage.setItem(peoplekey, JSON.stringify(people))
-}
+  localStorage.setItem(peoplekey, JSON.stringify(people));
+};
 
 // Use the people array to relist people on the page
 const listPeople = () => {
@@ -32,7 +32,7 @@ const listPeople = () => {
       </div>`;
   });
   peopleListElement.innerHTML = htmlString;
-}
+};
 
 // Add a new person the the people array
 const addPro = (fullName, dateOfB, selectOpt, heartRate, dataUrl) => {
@@ -54,7 +54,7 @@ const addPro = (fullName, dateOfB, selectOpt, heartRate, dataUrl) => {
 
   updateLocalStorage();
   listPeople();
-}
+};
 
 // Create an edit form for a person in the list
 const editPerson = (indexOfPersonToEdit) => {
@@ -78,7 +78,7 @@ const editPerson = (indexOfPersonToEdit) => {
   document.getElementById('editOthers').value = personToEdit.choice;
   document.getElementById('editRate').value = personToEdit.heartRate;
   setupEditImageLoader();
-}
+};
 
 // Complete an edit by updating the people array with the changed values
 const donePerson = (indexOfPersonToSave) => {
@@ -92,7 +92,7 @@ const donePerson = (indexOfPersonToSave) => {
   people[indexOfPersonToSave] = editProperties;
   updateLocalStorage();
   listPeople();
-}
+};
 
 // Delete a person from the people array with the given index
 const deletePerson = (indexOfPersonToDelete) => {
@@ -110,8 +110,8 @@ const clearLocal = () => {
   localStorage.clear();
   people = [];
   listPeople();
-}
+};
 
 const resetValue = () => {
   document.getElementById("fileInput").value = ""
-}
+};

@@ -24,7 +24,7 @@ const validPrint = (fullName, dateOfB, selectOpt, heartRate, dataUrl) => {
     errorMsg = validNotBlank(element);
     if (errorMsg != "") {
       errors.push(errorMsg);
-    }
+    };
   });
 
   if (errors.length > 0) {
@@ -38,5 +38,5 @@ const validPrint = (fullName, dateOfB, selectOpt, heartRate, dataUrl) => {
       heartRate.value,
       dataUrl.value
     );
-  }
+  };
 };

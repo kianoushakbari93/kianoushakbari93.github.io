@@ -3,7 +3,7 @@
 const newPersonImageReader = new FileReader();
 
 newPersonImageReader.onload = () => {
-  document.getElementById("newPersonDataUrl").value =
+  document.getElementById("Images").value =
     newPersonImageReader.result;
 };
 
