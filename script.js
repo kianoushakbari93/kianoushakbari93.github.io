@@ -5,6 +5,8 @@ let people = JSON.parse(localStorage.getItem(peoplekey)) || [];
 
 let dataUrl;
 
+let reader = new FileReader();
+
 function validPrint(fullName, dateOfB, selectOpt, heartRate) {
   // defining errors as an empty array to be able to print errors inside it
   let errors = [];
@@ -16,19 +18,19 @@ function validPrint(fullName, dateOfB, selectOpt, heartRate) {
     errorMsg = validNotBlank(element);
     if (errorMsg != "") {
       errors.push(errorMsg);
-    }
+    };
   });
   if (!dataUrl) {
-    errors.push("No image was selected!");
-  }
+    errors.push("No image!");
+  };
   console.log(errorMsg);
   if (errors.length > 0) {
     document.getElementById("unexpected").innerHTML = errors.join("<br>");
   } else {
     document.getElementById("unexpected").innerHTML = null;
     addPro(fullName.value, dateOfB.value, selectOpt.value, heartRate.value);
-  }
-}
+  };
+};
 
 // declaring the function to validate our form to be filled completely
 function validNotBlank(elementId) {
@@ -36,26 +38,23 @@ function validNotBlank(elementId) {
   let error = "";
   let id = elementId.id;
   if (x == "") {
-    error = id + " must be filled!";
+    error = id + " Blank!";
     elementId.style.backgroundColor = "red";
   } else {
     elementId.style.backgroundColor = "white";
-  }
+  };
   return error;
-}
+};
 
-let reader = new FileReader();
 const input = document.getElementById("fileInput");
 input.onchange = () => {
+  dataUrl = "";
   reader.readAsDataURL(input.files[0]);
-
-  // reader.result // null
-}
+};
 
 reader.onload = () => {
   dataUrl = reader.result;
-}
-
+};
 
 // declaring a function to add the properties inside our people array
 function addPro(fullName, dateOfB, selectOpt, heartRate) {
@@ -76,7 +75,7 @@ function addPro(fullName, dateOfB, selectOpt, heartRate) {
   } else {
     hobby = selectOpt;
   }
-  if(!dataUrl) {
+  if (!dataUrl) {
     return false;
   }
   const properties = {
@@ -87,11 +86,12 @@ function addPro(fullName, dateOfB, selectOpt, heartRate) {
     heartRate: heartRate,
   };
   people.push(properties);
+  dataUrl = '';
 
   localStorage.setItem(peoplekey, JSON.stringify(people));
 
   listPeople();
-}
+};
 
 function listPeople() {
   const peopleListElement = document.getElementById("peopleList");
@@ -99,8 +99,7 @@ function listPeople() {
 
   let htmlString = "";
   people.forEach((x, i) => {
-    htmlString +=
-      `<div class="colorlist">
+    htmlString += `<div class="colorlist">
         <div class="proDynamic">
           <img class="dynamicImg" src="${x.image}" />
           <p id="personPara-${i}">
@@ -116,41 +115,45 @@ function listPeople() {
   });
   peopleListElement.innerHTML = htmlString;
   //editing button
-}
+};
 
 function editPerson(indexOfPersonToEdit) {
   let paragraph = document.getElementById("personPara-" + indexOfPersonToEdit);
-  paragraph.innerHTML =
-    `<label class="labels" for="fName">Full Name: </label>` +
-    `
+  paragraph.innerHTML = `
+    <input class="editUpload" id="editFile" type="file" accept="image/jpg/png" multiple="false" /><br>
+    <label class="labels" for="fName">Full Name: </label>
     <input type="text" id="editName" name="editName"/><br>
-    ` +
-    `<label class="labels" for="dOb">Age: </label>` +
-    `
+    <label class="labels" for="dOb">Age: </label>
     <input type="date" id="editAge" name="editAge"/><br>
-    ` +
-    `
-    <label class="labels" for="others">Please type yours: </label>` +
-    `<input type="text" name="oThers" id="editOthers"><br>` +
-    `<label class="labels" for="others">Rating: </label>` +
-    `<input type="text" name="rating" id="editRate">`;
-}
+    <label class="labels" for="others">Hobby: </label>
+    <input type="text" name="oThers" id="editOthers"><br>
+    <label class="labels" for="others">Rating: </label>
+    <input type="text" name="rating" id="editRate">`;
+  const editInput = document.getElementById("editFile");
+  editInput.onchange = () => {
+    dataUrl = "";
+    reader.readAsDataURL(editInput.files[0]);
+  };
+};
+
 function donePerson(indexOfPersonToSave) {
   const editProperties = {
+    image: dataUrl,
     fName: document.getElementById("editName").value,
     dOb: document.getElementById("editAge").value,
     choice: document.getElementById("editOthers").value,
     heartRate: document.getElementById("editRate").value,
-  };
+  }
+  dataUrl = '';
   people[indexOfPersonToSave] = editProperties;
 
   listPeople();
-}
+};
 // delete a person from the people array with the given index
 function deletePerson(indexOfPersonToDelete) {
   people = people.filter((x, i) => i !== indexOfPersonToDelete);
   listPeople();
-}
+};
 const optDiv = document.getElementById("chooseHobtextbox");
 const otherOpt = document.getElementById("Hobby");
 otherOpt.onchange = () => {
