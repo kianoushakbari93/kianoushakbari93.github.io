@@ -190,6 +190,7 @@ body {
 }
 .dynamicImg {
   max-width: 25%;
+  border-radius: 5px;
 }
 .buttonDiv {
   display: flex;
