@@ -92,7 +92,7 @@
 
 body {
   background-image: url(./image/WXKqYQ.jpeg);
-  background-repeat: round;
+  background-size: cover;
 }
 .fadeBoarder {
   border-radius: 20px;
