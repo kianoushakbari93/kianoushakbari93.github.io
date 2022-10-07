@@ -172,6 +172,7 @@ body {
   border-radius: 5px;
   transition: 0.5s;
   background-color: rgb(87, 97, 97);
+  color: bisque;
 }
 .dynamicButton:hover {
   cursor: pointer;
