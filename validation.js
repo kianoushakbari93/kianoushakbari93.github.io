@@ -26,7 +26,7 @@ const validPrint = (fullName, dateOfB, selectOpt, heartRate, dataUrl) => {
   let errorMsg = "";
   
   if (!validateContainsNoNumbers(fullName.value)) {
-    errors.push("Name has Numbers!")
+    errors.push("Name has Numbers!");
   };
   
 
@@ -47,6 +47,7 @@ const validPrint = (fullName, dateOfB, selectOpt, heartRate, dataUrl) => {
     document.getElementById("unexpected").style.padding = "10px";
   } else {
     document.getElementById("unexpected").innerHTML = null;
+    document.getElementById("unexpected").style.border = "none";
     addPro(
       fullName.value,
       dateOfB.value,
